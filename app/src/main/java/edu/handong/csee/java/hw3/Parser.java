@@ -15,7 +15,7 @@ public class Parser {
 		this.kordata = kordata;
 	}
 	
-	public void findValue() {
+	public void FindValue() {
 		
 		/* 처음 배열 array에서는 처음에는 \n로 json을 나눈다.
 		 * 찾고자 하는 key의 줄에 {가 포함되어 있다면, bigdata method로 넘어간다.
@@ -24,10 +24,10 @@ public class Parser {
 		 * 만약에 그 줄에 {를 포함하고 있지 않다면 :로 스트링을 나눈다.
 		 * 찾고자 하는 key값이 이 배열에 포함되어 있다면 그 다음 배열의 값을 출력한다. print 함수에서 구현
 		 */
-		smalldata();
+		Smalldata();
 	}
 	
-	private int bigdata(int startIndex) {// data를 대괄호 기준으로 나눈다.
+	private int Bigdata(int startIndex) {// data를 대괄호 기준으로 나눈다.
 		int count1 = 0;
 		int count2 = 0;
 		int start = 0, end=0;
@@ -60,12 +60,12 @@ public class Parser {
 			// print함수에 보내진다.
 		}
 		//만약 data안에 같은 이름의string이 있다면 
-		printParse(data);
+		PrintParse(data);
 		//bigdata(data);
 		return end;
 	}
 	
-	private void smalldata() {
+	private void Smalldata() {
 		smalldata = kordata.split("\n|:");
 		int size = smalldata.length;
 		int start=0;
@@ -79,17 +79,17 @@ public class Parser {
 				//바로 옆에 {가 있으면 이 값을 묶어서 프린트 해야한다. 이 작업은 bigdata에서 한다. 
 				if(smalldata[i+1].equals("{")) {
 					start = kordata.indexOf(smalldata[i], start);
-					newStart = bigdata(start);
+					newStart = Bigdata(start);
 					start = newStart;
 				}
 				//smalldata안에는 parse한 단어가 들어가 있고, 이렇게 보내면 계속 같은 값을 리
 				else
-					printParse(smalldata[i+1]);
+					PrintParse(smalldata[i+1]);
 		}
 		
 	}
 	
-	public void printParse(String par) {
+	public void PrintParse(String par) {
 		System.out.println(par);
 	}
 }

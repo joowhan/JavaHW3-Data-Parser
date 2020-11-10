@@ -203,7 +203,7 @@ public class MainRunner {
     		System.out.println("Can't find " +key);
     	}
     	else {//parsing을 하여 value를 출
-    		myParser.findValue();
+    		myParser.FindValue();
     		
     	}
     }
