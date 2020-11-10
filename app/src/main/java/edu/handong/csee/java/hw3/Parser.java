@@ -49,6 +49,9 @@ public class Parser {
 		//for(String t : value)
 			//System.out.println(t);
 	}
+	public void bigdata(String data) {
+		
+	}
 	public int bigdata(int startIndex) {// data를 대괄호 기준으로 나눈다.
 		int count1 = 0;
 		int count2 = 0;
@@ -81,7 +84,9 @@ public class Parser {
 			// 그사이의 데이터를 추출한다.
 			// print함수에 보내진다.
 		}
+		//만약 data안에 같은 이름의string이 있다면 
 		printParse(data);
+		bigdata(data);
 		return end;
 	}
 	
@@ -101,7 +106,7 @@ public class Parser {
 					start = kordata.indexOf(smalldata[i], start);
 					newStart = bigdata(start);
 					start = newStart;
-					if(keyString.equals("\"hits\"")) break;
+					//if(keyString.equals("\"hits\"")) break;
 				}
 				//smalldata안에는 parse한 단어가 들어가 있고, 이렇게 보내면 계속 같은 값을 리
 				else
