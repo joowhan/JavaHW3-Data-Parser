@@ -190,10 +190,9 @@ public class MainRunner {
     
     public static void main(String[] args) {
     	MainRunner myRunner = new MainRunner();
-    	//String key = "\""+args[0]+"\""; //args[0]로 대체할 것임 
-    	String key = "\"hits\"";
+    	String key = "\""+args[0]+"\""; 
+    	//String key = "\"hits\"";//args[0]로 대체할 것임 
     	String kordata = new String(myRunner.korData);
-    	//String[] dataArr;
     	int begin = kordata.indexOf("{");
     	int end = kordata.lastIndexOf("}");
     	

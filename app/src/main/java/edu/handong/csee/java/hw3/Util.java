@@ -5,8 +5,4 @@ public class Util {
 		String str = String.valueOf(ch); 
 		return str;
 	}
-	/*public static String dataDivision(String data, String st) {
-		//String result = data.split(",");
-		
-	}*/
 }

@@ -3,11 +3,8 @@
 public class Parser {
 	private String keyString;
 	private String kordata;
-	private String[] value;
 	private String[] smalldata;
-	//private String[] bigdata;
-	//private String[] smallvalue;
-	//private int count=0;
+
 	public Parser() {
 		keyString = "";
 		kordata ="";
@@ -19,40 +16,18 @@ public class Parser {
 	}
 	
 	public void findValue() {
-		int size = 0;
-		//int count = 0;
-		value = new String[size];
-		//kordata = new String[size];
-		value = kordata.split("\n");
-		size = value.length;
-		//Parser parsing = new Parser();
-		for(int i=0;i<size;i++) {
-			if(value[i].contains(keyString)) {
-				
-					smalldata(value);
-					
-			}
-		}
-		//처음 배열 array에서는 처음에는 \n로 json을 나눈다. 
-		//찾고자 하는 key의 줄에 {가 포함되어 있다면, bigdata method로 넘어간다.
-		//그렇지 않다면,
-		//small data method로 넘어간다. 
-		//만약에 그 줄에 {를 포함하고 있지 않다면 :로 스트링을 나눈다. 
-		//찾고자 하는 key값이 이 배열에 포함되어 있다면 그 다음 배열의 값을 출력한다. print 함수에서 구현
-
-		//value = Util.dataDivision(kordata, ",");
-		//for(int i=0;i<size;i++) {
-			//value[i] = Util.dataDivision(kordata, ",");
-		//}
 		
-		//value = kordata.split(",");
-		//for(String t : value)
-			//System.out.println(t);
+		/* 처음 배열 array에서는 처음에는 \n로 json을 나눈다.
+		 * 찾고자 하는 key의 줄에 {가 포함되어 있다면, bigdata method로 넘어간다.
+		 * 그렇지 않다면,
+		 * small data method로 넘어간다.
+		 * 만약에 그 줄에 {를 포함하고 있지 않다면 :로 스트링을 나눈다.
+		 * 찾고자 하는 key값이 이 배열에 포함되어 있다면 그 다음 배열의 값을 출력한다. print 함수에서 구현
+		 */
+		smalldata();
 	}
-	public void bigdata(String data) {
-		
-	}
-	public int bigdata(int startIndex) {// data를 대괄호 기준으로 나눈다.
+	
+	private int bigdata(int startIndex) {// data를 대괄호 기준으로 나눈다.
 		int count1 = 0;
 		int count2 = 0;
 		int start = 0, end=0;
@@ -86,11 +61,11 @@ public class Parser {
 		}
 		//만약 data안에 같은 이름의string이 있다면 
 		printParse(data);
-		bigdata(data);
+		//bigdata(data);
 		return end;
 	}
 	
-	public void smalldata(String[] value) {
+	private void smalldata() {
 		smalldata = kordata.split("\n|:");
 		int size = smalldata.length;
 		int start=0;
@@ -106,7 +81,6 @@ public class Parser {
 					start = kordata.indexOf(smalldata[i], start);
 					newStart = bigdata(start);
 					start = newStart;
-					//if(keyString.equals("\"hits\"")) break;
 				}
 				//smalldata안에는 parse한 단어가 들어가 있고, 이렇게 보내면 계속 같은 값을 리
 				else
